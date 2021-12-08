@@ -1,17 +1,27 @@
 fun main() {
-    fun part1(input: List<String>): Int {
-        return input.size
+    fun findDepthCount(input: List<Int>): Int {
+        var prev: Int
+        var curr: Int
+        var counter = 0
+        prev = input[0]
+        for (elem in input) {
+            curr = elem
+            if (prev < curr) {
+                counter++
+            }
+            prev = curr
+        }
+        return counter
     }
 
-    fun part2(input: List<String>): Int {
-        return input.size
+    fun part1(): Int {
+        return findDepthCount(readInputAsInt("Day01_test"))
     }
 
-    // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)
+    fun part2(): Int {
+        return findDepthCount(transformToSlidingWindow(readInputAsInt("Day01_test")))
+    }
 
-    val input = readInput("Day01")
-    println(part1(input))
-    println(part2(input))
+    println(part1())
+    println(part2())
 }
