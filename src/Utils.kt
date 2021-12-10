@@ -17,3 +17,7 @@ fun readInputAsInt(name: String) = File("src", "$name.txt").readLines().map { it
 fun transformToSlidingWindow(input: List<Int>): List<Int> {
     return input.windowed(size = 3, step = 1).map { it.sum() }
 }
+
+fun transformToInt(elem: String): Int {
+    return elem.substringAfter(" ").toInt()
+}
